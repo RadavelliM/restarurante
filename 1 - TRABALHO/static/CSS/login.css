@@ -1,0 +1,103 @@
+:root {
+    --navbar-bgc: linear-gradient(-90deg, rgba(38, 0, 0, 1) 0%, rgba(77, 33, 33, 1) 29%, rgba(255, 255, 255, 1) 84%);
+    --pre-color: linear-gradient(90deg, rgba(64, 23, 23, 1) 0%, rgba(115, 70, 70, 1) 50%, rgba(153, 118, 118, 1) 100%);
+    --box-shadow: 3px 20px 20px rgb(34, 32, 32);
+    --hover-text-color: grey;
+}
+
+body {
+    padding: 0%;
+    margin: 0%;
+}
+
+header {
+    position: relative;
+}
+
+header img {
+    margin-top: 80px;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--box-shadow);
+}
+
+
+.login {
+    margin-top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+@keyframes translateHeaderText {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 25vw;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
+
+pre {
+    margin-top: -1px;
+    background: var(--pre-color);
+    background-clip: text;
+    color: transparent;
+}
+
+nav {
+    margin-top: -120px;
+    user-select: none;
+    background: #260000;
+    background: var(--navbar-bgc);
+    box-shadow: var(--box-shadow);
+
+    width: 100vw;
+    height: 80px;
+
+    display: flex;
+    position: fixed;
+
+}
+
+nav img {
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+}
+
+nav button {
+    height: 20px;
+}
+
+.NavButtonLog {
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#Login {
+    position: relative;
+    right: -500px;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+#CreateAccount {
+    margin-left: 300px;
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+    transition: 0.5s;
+}
+
+#CreateAccount:hover {
+    color: var(--hover-text-color);
+}
