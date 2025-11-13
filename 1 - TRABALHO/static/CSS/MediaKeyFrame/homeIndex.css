@@ -1,0 +1,12 @@
+/* ARQUIVO EXCLUSIVAMENTE PARA FAZER RESPONSIVIDADE, MEDIAS E KEYFRAMES */
+
+
+@media (max-width: 729px) {
+    .NavButtonLog {
+        display: none;
+    }
+
+    .menu {
+        display: grid;
+    }
+}
