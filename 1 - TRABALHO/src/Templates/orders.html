@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/CSS/Style/orders.css">
+    <link rel="stylesheet" href="../static/CSS/MediaKeyFrame/homeIndex.css">
+    <link rel="shortcut icon" href="../static/IMAGES/HEADER E LOGIN/restIcone.png" type="image/x-icon">
+    <script src="../static/JS/homeIndex.js"></script>
+    <script src="../static/JS/card.js"></script>
+
+    <title>SABOR & AMOR - PEDIDOS</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <img class="headerIMG" src="../static/IMAGES/HEADER E LOGIN/rest_logo.png" alt="">
+
+            <div class="header">
+                <h2>
+                    <pre>
+    <span id="RESTAURANTE">RESTAURANTE</span> 
+        <span id="SEA">Sabor & Amor</span>
+                </pre>
+                </h2>
+            </div>
+
+            <div class="navbarRestSide">
+                <a id="deslog" class="NavButtonLog" href="{{ url_for('main') }}">Desconectar</a>
+
+                <div class="responsiveMenuSideBar">
+                    <div class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+                        <a id="sideDeslog" class="sideNavButtonLog"
+                            href="{{ url_for('main') }}">Desconectar</a>
+                    </div>
+
+                    <div class="menu">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="espace"></div>
+    
+    <div id="orderSummary"></div>
+    
+    <div class="foodsMenu">
+
+        <div class="card">
+            <img src="../static/IMAGES/CARDÁPIO/macarronada.jpeg" alt="">
+
+            <div class="info">
+                <h1>MACARRONADA</h1>
+                <p>R$ <span> 29,99</span></p>
+            </div>
+
+            <div class="buy">
+                <button class="buttonBuy">Comprar</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="../static/IMAGES/CARDÁPIO/classico.jpeg" alt="">
+
+            <div class="info">
+                <h1>CLÁSSICO</h1>
+                <p>R$ <span> 21,90</span></p>
+            </div>
+
+            <div class="buy">
+                <button class="buttonBuy">Comprar</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="../static/IMAGES/CARDÁPIO/entreveiro.jpeg" alt="">
+
+            <div class="info">
+                <h1>ENTREVEIRO</h1>
+                <p>R$ <span> 40,00</span></p>
+            </div>
+
+            <div class="buy">
+                <button class="buttonBuy">Comprar</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="../static/IMAGES/CARDÁPIO/feijoada.jpeg" alt="">
+
+            <div class="info">
+                <h1>FEIJOADA</h1>
+                <p>R$ <span> 49,99</span></p>
+            </div>
+
+            <div class="buy">
+                <button class="buttonBuy">Comprar</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="../static/IMAGES/CARDÁPIO/tropeiro.jpeg" alt="">
+
+            <div class="info">
+                <h1>TROPEIRO</h1>
+                <p>R$ <span> 55,00</span></p>
+            </div>
+
+            <div class="buy">
+                <button class="buttonBuy">Comprar</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p id="footerP">RESTAURANTE SABOR & AMOR - TODOS OS DIREITOS RESERVADOS © </p>
+        <p>CONSIDERE TODOS OS ELEMENTOS MERAMENTE FICTÍCIOS COM PROPOSITOS DE APRESENTAÇÃO DE TRABALHO UNIVERSITÁRIO, AS
+            INFORMAÇÕES
+            AQUI CONTIDAS NÃO CONVÉM COM A REALIDADE. QUALQUER SEMELHANÇA É MERA COINCIDÊNCIA.</p>
+    </footer>

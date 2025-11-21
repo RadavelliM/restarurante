@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/CSS/Style/decision.css">
+    <link rel="stylesheet" href="../static/CSS/MediaKeyFrame/homeIndex.css">
+    <link rel="shortcut icon" href="../static/IMAGES/HEADER E LOGIN/restIcone.png" type="image/x-icon">
+    <script src="../static/JS/homeIndex.js"></script>
+    <title>SABOR & AMOR - LOGIN</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <img class="headerIMG" src="../static/IMAGES/HEADER E LOGIN/rest_logo.png" alt="">
+
+            <div class="header">
+                <h2>
+                    <pre>
+    <span id="RESTAURANTE">RESTAURANTE</span> 
+        <span id="SEA">Sabor & Amor</span>
+                </pre>
+                </h2>
+            </div>
+
+            <div class="navbarRestSide">
+                <a id="deslog" class="NavButtonLog" href="{{ url_for('main') }}">Desconectar</a>
+
+                <div class="responsiveMenuSideBar">
+                    <div class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+                        <a id="sideDeslog" class="sideNavButtonLog" href="{{ url_for('main') }}">Desconectar</a>
+                    </div>
+
+                    <div class="menu">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="decision">
+            <a href="{{ url_for('orders') }}">FAZER PEDIDO</a>
+            <a href="{{ url_for('list_stock') }}">ATUALIZAR ESTOQUE</a>
+            <a href="{{ url_for('list_clients') }}">ATUALIZAR CLIENTES</a>
+        </div>
+    </div>
