@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/CSS/Style/updateStock.css">
+    <link rel="stylesheet" href="../static/CSS/MediaKeyFrame/homeIndex.css">
+    <link rel="shortcut icon" href="../static/IMAGES/HEADER E LOGIN/restIcone.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/CSS/Style/flash.css">
+    <script src="../static/JS/homeIndex.js"></script>
+    <title>SABOR & AMOR - ATUALIZAR CLIENTES</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <img class="headerIMG" src="../static/IMAGES/HEADER E LOGIN/rest_logo.png" alt="">
+
+            <div class="header">
+                <h2>
+                    <pre>
+    <span id="RESTAURANTE">RESTAURANTE</span> 
+        <span id="SEA">Sabor & Amor</span>
+                </pre>
+                </h2>
+            </div>
+
+            <div class="navbarRestSide">
+                <a id="return" class="NavButtonLog" href="{{ url_for('decision') }}">Tela Inicial</a>
+                <a id="deslog" class="NavButtonLog" href="{{ url_for('main') }}">Desconectar</a>
+
+                <div class="responsiveMenuSideBar">
+                    <div class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+                        <a id="sideDeslog" class="sideNavButtonLog" href="{{ url_for('main') }}">Desconectar</a>
+                        <a id="sideReturn" class="NavButtonLog" href="{{ url_for('decision') }}">Tela Inicial</a>
+                    </div>
+
+                    <div class="menu">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="espace"></div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="mensagens">
+        {% for categoria, mensagem in messages %}
+        <p class="{{ categoria }}">{{ mensagem }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="updateStockList">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for client in clients %}
+
+                <tr>
+                    <td>{{ client.Usuario_nome }}</td>
+                    <td>{{ client.Usuario_email }}</td>
+                    <td>
+                        <a class="delete" data-id="{{ client.Usuario_id }}" href="#">Excluir</a>
+
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script>
+        function embedGlobalScope() {
+            function Index() {
+                this.start = () => {
+                    this.buttonPressImage()
+                }
+
+                this.buttonPressImage = () => {
+                    window.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('header') || e.target.classList.contains('headerIMG')) {
+                            window.location.href = "{{ url_for('main') }}"
+                        }
+                        if (e.target.classList.contains('delete')) {
+                            let id = e.target.getAttribute('data-id')
+                            let confirmation = window.confirm('Tem certeza que deseja excluir?')
+
+                            if (confirmation) {
+                                window.location.href = `/Clients/delete/${id}`
+                            } else {
+                                alert('Exclusão cancelada')
+                            }
+                        }
+
+                    })
+                }
+            }
+
+            const render = new Index()
+            render.start()
+        }
+        embedGlobalScope()
+    </script>
+</body>
+
+</html>

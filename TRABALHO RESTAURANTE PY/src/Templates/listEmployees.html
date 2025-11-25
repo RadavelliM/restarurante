@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/CSS/Style/updateStock.css">
+    <link rel="stylesheet" href="../static/CSS/MediaKeyFrame/homeIndex.css">
+    <link rel="shortcut icon" href="../static/IMAGES/HEADER E LOGIN/restIcone.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/CSS/Style/flash.css">
+    <script src="../static/JS/homeIndex.js"></script>
+    <title>SABOR & AMOR - ATUALIZAR ESTOQUE</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <img class="headerIMG" src="../static/IMAGES/HEADER E LOGIN/rest_logo.png" alt="">
+
+            <div class="header">
+                <h2>
+                    <pre>
+    <span id="RESTAURANTE">RESTAURANTE</span> 
+        <span id="SEA">Sabor & Amor</span>
+                </pre>
+                </h2>
+            </div>
+
+            <div class="navbarRestSide">
+                <a id="return" class="NavButtonLog" href="{{ url_for('decision') }}">Tela Inicial</a>
+                <a id="deslog" class="NavButtonLog" href="{{ url_for('main') }}">Desconectar</a>
+
+                <div class="responsiveMenuSideBar">
+                    <div class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+                        <a id="sideDeslog" class="sideNavButtonLog" href="{{ url_for('main') }}">Desconectar</a>
+                        <a id="sideReturn" class="NavButtonLog" href="{{ url_for('decision') }}">Tela Inicial</a>
+                    </div>
+
+                    <div class="menu">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="espace"></div>
+
+    <div class="createItenStock">
+        Para adicionar funcionários, <a href="{{ url_for('create_employees') }}">Clique Aqui!</a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="mensagens">
+        {% for categoria, mensagem in messages %}
+        <p class="{{ categoria }}">{{ mensagem }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="updateStockList">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Nascimento</th>
+                    <th>Email</th>
+                    <th>telefone</th>
+                    <th>Cargo</th>
+                    <th>Salário</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in employees %}
+
+                <tr>
+                    <td>{{ item.Funcionario_nome }}</td>
+                    <td>{{ item.Funcionario_CPF }}</td>
+                    <td>{{ item.Funcionario_dt_nasc }}</td>
+                    <td>{{ item.Funcionario_email }}</td>
+                    <td>{{ item.Funcionario_telefone }}</td>
+                    <td>{{ item.Cargo_nome }}</td>
+                    <td>{{ item.Funcionario_salario }}</td>
+                    <td>
+                        <a class="edit" href="{{ url_for('update_employees', id=item.Funcionario_id) }}">Editar</a>
+                        <a class="delete" data-id="{{ item.Funcionario_id }}" href="#">Excluir</a>
+                        <a class="edit" href="{{ url_for('create_user_employee', id=item.Funcionario_id) }}">Cadastrar Acesso</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script>
+        function embedGlobalScope() {
+            function Index() {
+                this.start = () => {
+                    this.buttonPressImage()
+                }
+
+                this.buttonPressImage = () => {
+                    window.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('header') || e.target.classList.contains('headerIMG')) {
+                            window.location.href = "{{ url_for('main') }}"
+                        }
+                        if (e.target.classList.contains('delete')) {
+                            let id = e.target.getAttribute('data-id')
+                            let confirmation = window.confirm('Tem certeza que deseja excluir?')
+
+                            if (confirmation) {
+                                window.location.href = `/Employees/delete/${id}`
+                            } else {
+                                alert('Exclusão cancelada')
+                            }
+                        }
+
+                    })
+                }
+            }
+
+            const render = new Index()
+            render.start()
+        }
+        embedGlobalScope()
+    </script>
+
+</body>
+
+</html>
