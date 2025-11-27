@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/orders.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/MediaKeyFrame/homeIndex.css') }}">
+
+    <!-- Ícone -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='IMAGES/HEADER E LOGIN/restIcone.png') }}" type="image/x-icon">
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='JS/homeIndex.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/card.js') }}"></script>
+
+    <title>SABOR & AMOR - PEDIDOS</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <img class="headerIMG"
+                src="{{ url_for('static', filename='IMAGES/HEADER E LOGIN/rest_logo.png') }}"
+                alt="Logo">
+
+            <div class="header">
+                <h2>
+                    <pre>
+    <span id="RESTAURANTE">RESTAURANTE</span> 
+        <span id="SEA">Sabor & Amor</span>
+                    </pre>
+                </h2>
+            </div>
+
+            <div class="navbarRestSide">
+                <a id="deslog" class="NavButtonLog" href="{{ url_for('main.main') }}">Desconectar</a>
+
+                <div class="responsiveMenuSideBar">
+                    <div class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+                        <a id="sideDeslog" class="sideNavButtonLog"
+                            href="{{ url_for('main.main') }}">Desconectar</a>
+                    </div>
+
+                    <div class="menu">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="espace"></div>
+
+    <div id="orderSummary"></div>
+
+    <div class="confirmOrder">
+        <button>Confirmar</button>
+    </div>
+
+    <div class="foodsMenu">
+
+        {% set pratos = [
+            {'nome': 'MACARRONADA', 'preco': '29,99', 'img': 'macarronada.jpeg'},
+            {'nome': 'CLÁSSICO', 'preco': '21,90', 'img': 'classico.jpeg'},
+            {'nome': 'ENTREVEIRO', 'preco': '40,00', 'img': 'entreveiro.jpeg'},
+            {'nome': 'FEIJOADA', 'preco': '49,99', 'img': 'feijoada.jpeg'},
+            {'nome': 'TROPEIRO', 'preco': '55,00', 'img': 'tropeiro.jpeg'}
+        ] %}
+
+        {% for p in pratos %}
+        <div class="card">
+            <img src="{{ url_for('static', filename='IMAGES/CARDÁPIO/' ~ p.img ) }}" alt="{{ p.nome }}">
+
+            <div class="info">
+                <h1>{{ p.nome }}</h1>
+                <p>R$ <span>{{ p.preco }}</span></p>
+            </div>
+
+            <div class="buy">
+                <button class="buttonBuy">Comprar</button>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <footer>
+        <p id="footerP">RESTAURANTE SABOR & AMOR - TODOS OS DIREITOS RESERVADOS ©</p>
+        <p>CONTEÚDO MERAMENTE FICTÍCIO PARA FINS ACADÊMICOS.</p>
+    </footer>
+
+    <script>
+        function embedGlobalScope() {
+            function Index() {
+                this.start = () => {
+                    this.buttonPress()
+                }
+
+                this.buttonPress = () => {
+                    window.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('header') || e.target.classList.contains('headerIMG')) {
+                            window.location.href = "{{ url_for('main.main') }}"
+                        }
+                    })
+                }
+            }
+
+            const render = new Index()
+            render.start()
+        }
+        embedGlobalScope()
+    </script>
+
+</body>
+
+</html>

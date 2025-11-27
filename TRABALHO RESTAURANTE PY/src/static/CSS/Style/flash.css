@@ -1,0 +1,12 @@
+.mensagens {
+    text-align: center;
+}
+
+.mensagens .erro {
+    color: red;
+}
+
+.mensagens .sucesso {
+    color: rgb(2, 136, 0);
+    font-size: 25px;
+}

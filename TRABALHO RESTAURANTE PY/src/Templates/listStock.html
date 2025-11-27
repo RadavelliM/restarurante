@@ -1,0 +1,53 @@
+<!-- filepath: d:\TRABALHO RESTAURANTE PY\src\Templates\listStock.html -->
+{% extends "baseLogado.html" %}
+{% block title %}SABOR & AMOR - LISTAR ESTOQUE {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/stockEmployeesClients.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<div class="createItenStock">
+    Para adicionar itens ao estoque,
+    <a href="{{ url_for('stock.create_stock') }}">Clique Aqui!</a>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="mensagens">
+    {% for categoria, mensagem in messages %}
+    <p class="{{ categoria }}">{{ mensagem }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+<div class="updateStockList">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Medida</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in stock %}
+            <tr>
+                <td>{{ item.Ingrediente_nome }}</td>
+                <td>{{ item.Ingrediente_qtd }}</td>
+                <td>{{ item.Ingrediente_un_medida }}</td>
+                <td>
+                    <a class="edit" href="{{ url_for('stock.update_stock', id=item.Ingrediente_id) }}">Editar</a>
+                    <a class="delete" data-id="{{ item.Ingrediente_id }}" href="#">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

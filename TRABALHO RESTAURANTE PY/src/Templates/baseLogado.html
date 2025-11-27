@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/baseLogado.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/MediaKeyFrame/homeIndex.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/flash.css') }}">
+
+    <!-- ICON -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='IMAGES/HEADER E LOGIN/restIcone.png') }}"
+        type="image/x-icon">
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='JS/homeIndex.js') }}"></script>
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <img class="headerIMG" src="{{ url_for('static', filename='IMAGES/HEADER E LOGIN/rest_logo.png') }}"
+                alt="Logo">
+
+            <div class="header">
+                <h2>
+                    <pre>
+    <span id="RESTAURANTE">RESTAURANTE</span>
+        <span id="SEA">Sabor & Amor</span>
+                    </pre>
+                </h2>
+            </div>
+
+            <div class="navbarRestSide">
+                <a id="return" class="NavButtonLog" href="{{ url_for('define_decision.decision') }}">Tela Inicial</a>
+
+                <a id="deslog" class="NavButtonLog" href="{{ url_for('main.main') }}">Desconectar</a>
+
+                <div class="responsiveMenuSideBar">
+                    <div class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+
+                        <a id="sideDeslog" class="sideNavButtonLog" href="{{ url_for('main.main') }}">Desconectar</a>
+
+                        <a id="sideReturn" class="sideNavButtonLog"
+                            href="{{ url_for('define_decision.decision') }}">Tela Inicial</a>
+                    </div>
+
+                    <div class="menu">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="espace"></div>
+
+    {% block content %}
+    {% endblock %}
+
+    <script>
+        function embedGlobalScope() {
+            function Index() {
+                this.start = () => {
+                    this.buttonPressImage()
+                }
+
+                this.buttonPressImage = () => {
+                    window.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('header') || e.target.classList.contains('headerIMG')) {
+                            window.location.href = "{{ url_for('main.main') }}"
+                        }
+
+                    })
+                }
+            }
+
+            const render = new Index()
+            render.start()
+        }
+        embedGlobalScope()
+    </script>
+
+</body>
+
+</html>
