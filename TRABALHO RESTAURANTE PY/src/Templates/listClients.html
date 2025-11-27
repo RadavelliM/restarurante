@@ -1,0 +1,48 @@
+{% extends "baseLogado.html" %}
+{% block title %}SABOR & AMOR - LISTAR CLIENTES {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/stockEmployeesClients.css') }}">
+{% endblock %}
+
+    {% block content %}
+    
+        <!-- FLASH MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="mensagens">
+                {% for categoria, mensagem in messages %}
+                    <p class="{{ categoria }}">{{ mensagem }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+    
+        <div class="updateStockList">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    {% for client in clients %}
+                    <tr>
+                        <td>{{ client.Usuario_nome }}</td>
+                        <td>{{ client.Usuario_email }}</td>
+    
+                        <td>
+                            <a class="delete"
+                               data-id="{{ client.Usuario_id }}"
+                               href="#">Excluir</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
+</body>
+</html>

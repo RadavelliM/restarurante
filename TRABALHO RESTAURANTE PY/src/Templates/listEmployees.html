@@ -1,0 +1,73 @@
+{% extends "baseLogado.html" %}
+{% block title %}SABOR & AMOR - LISTAR FUNCIONÁRIOS {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/stockEmployeesClients.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="createItenStock">
+    Para adicionar funcionários,
+    <a class="routerUpdate" href="{{ url_for('employees.create_employees') }}">Clique Aqui!</a>
+</div>
+
+<!-- FLASH MESSAGES -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="mensagens">
+    {% for categoria, mensagem in messages %}
+    <p class="{{ categoria }}">{{ mensagem }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+<div class="updateStockList">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Nascimento</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Cargo</th>
+                <th>Salário</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in employees %}
+            <tr>
+                <td>{{ item.Funcionario_nome }}</td>
+                <td>{{ item.Funcionario_CPF }}</td>
+                <td>{{ item.Funcionario_dt_nasc }}</td>
+                <td>{{ item.Funcionario_email }}</td>
+                <td>{{ item.Funcionario_telefone }}</td>
+                <td>{{ item.Cargo_nome }}</td>
+                <td>{{ item.Funcionario_salario }}</td>
+
+                <td>
+                    <a class="edit" href="{{ url_for('employees.update_employees', id=item.Funcionario_id) }}">
+                        Editar
+                    </a>
+
+                    <a class="delete" data-id="{{ item.Funcionario_id }}" href="#">
+                        Excluir
+                    </a>
+
+                    <a class="edit" href="{{ url_for('employees.create_user_employee', id=item.Funcionario_id) }}">
+                        Cadastrar Acesso
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+</body>
+
+</html>

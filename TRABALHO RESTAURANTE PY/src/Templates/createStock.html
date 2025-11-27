@@ -1,0 +1,47 @@
+{% extends "baseLogado.html" %}
+{% block title %}SABOR & AMOR - CRIAR ITEM {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/stockEmployeesClients.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="createItenStock">
+    Para alterar itens do estoque,
+    <a href="{{ url_for('stock.list_stock') }}">Clique Aqui!</a>
+
+    <h2>COLOQUE NOS CAMPOS ABAIXO AS INFORMAÇÕES PARA O ESTOQUE</h2>
+</div>
+
+<div class="formStockCreate">
+    <form action="{{ url_for('stock.create_stock') }}" method="POST">
+
+        <div class="inputGroup">
+            <label>Nome</label>
+            <input type="text" name="nome" required>
+        </div>
+
+        <div class="inputGroup">
+            <label>Quantidade</label>
+            <input type="number" min="0" name="quantidade" required>
+        </div>
+
+        <div class="inputGroup extra">
+            <label>Unidade de medida</label>
+            <select name="medida" required>
+                <option value="KG">KG</option>
+                <option value="LITRO">LITRO</option>
+            </select>
+        </div>
+
+        <div class="inputGroup extra">
+            <input id="submit" type="submit" value="Confirmar">
+        </div>
+
+    </form>
+</div>
+{% endblock %}
+
+</body>
+
+</html>
