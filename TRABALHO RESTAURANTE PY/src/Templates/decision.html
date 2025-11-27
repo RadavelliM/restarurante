@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='CSS/Style/decision.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='CSS/MediaKeyFrame/homeIndex.css') }}">
+
+    <!-- ICON -->
+    <link rel="shortcut icon"
+          href="{{ url_for('static', filename='IMAGES/HEADER E LOGIN/restIcone.png') }}"
+          type="image/x-icon">
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='JS/homeIndex.js') }}"></script>
+
+    <title>SABOR & AMOR - MENU PRINCIPAL</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <img class="headerIMG"
+                 src="{{ url_for('static', filename='IMAGES/HEADER E LOGIN/rest_logo.png') }}"
+                 alt="Logo">
+
+            <div class="header">
+                <h2>
+                    <pre>
+    <span id="RESTAURANTE">RESTAURANTE</span>
+        <span id="SEA">Sabor & Amor</span>
+                    </pre>
+                </h2>
+            </div>
+
+            <div class="navbarRestSide">
+                <a id="deslog" class="NavButtonLog"
+                   href="{{ url_for('main.main') }}">Desconectar</a>
+
+                <div class="responsiveMenuSideBar">
+
+                    <div class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+
+                        <a id="sideDeslog" class="sideNavButtonLog"
+                           href="{{ url_for('main.main') }}">Desconectar</a>
+                    </div>
+
+                    <div class="menu">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="decision">
+            <a href="{{ url_for('orders.orders') }}">FAZER PEDIDO</a>
+            <a href="{{ url_for('stock.list_stock') }}">ATUALIZAR ESTOQUE</a>
+            <a href="{{ url_for('clients.list_clients') }}">ATUALIZAR CLIENTES</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

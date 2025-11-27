@@ -1,0 +1,69 @@
+{% extends "baseLogado.html" %}
+{% block title %}SABOR & AMOR - CADASTRAR FUNCIONÁRIO {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/Style/stockEmployeesClients.css') }}">
+{% endblock %}
+
+    {% block content %}
+    
+        <div class="createItenStock">
+            Para alterar funcionários,
+            <a href="{{ url_for('employees.list_employees') }}">Clique Aqui!</a>
+    
+            <h2>COLOQUE NOS CAMPOS ABAIXO AS INFORMAÇÕES PARA O ESTOQUE</h2>
+        </div>
+    
+        <div class="formStockCreate">
+            <form action="{{ url_for('employees.create_employees') }}" method="POST">
+    
+                <div class="inputGroup">
+                    <label>Nome</label>
+                    <input type="text" name="nome" required>
+                </div>
+    
+                <div class="inputGroup">
+                    <label>CPF</label>
+                    <input type="text" name="CPF"
+                        pattern="^(?!^(\d)\1+$)(?:\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11})$"
+                        required>
+                </div>
+    
+                <div class="inputGroup">
+                    <label>Nascimento</label>
+                    <input type="date" name="nascimento" required>
+                </div>
+    
+                <div class="inputGroup">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+    
+                <div class="inputGroup">
+                    <label>Telefone</label>
+                    <input type="tel" name="telefone" required>
+                </div>
+    
+                <div class="inputGroup">
+                    <label>Salário</label>
+                    <input type="number" name="salario" min="1518" required>
+                </div>
+    
+                <div class="inputGroup extra">
+                    <label>Cargo</label>
+                    <select name="cargo" required>
+                        {% for c in cargos %}
+                            <option value="{{ c.Cargo_id }}">{{ c.Cargo_nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+    
+                <div class="inputGroup extra">
+                    <input id="submit" type="submit" value="Confirmar">
+                </div>
+    
+            </form>
+        </div>
+    {% endblock %}
+
+</body>
+</html>
